@@ -1,0 +1,17 @@
+{
+  "name": "applicationModule",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "anotherModule": "file:../anotherModule",
+    "counter": "file:../counterModule",
+    "bobril": "^9.2.0",
+    "bobril-m": "^0.13.1"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "counter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "counter.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "bobril": {
+    "dir": "./dist"
+  },
+  "dependencies": {
+    "bobril": "^9.2.0",
+    "bobril-m": "^0.13.1"
+  }
+}
