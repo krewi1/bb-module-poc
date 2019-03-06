@@ -12,6 +12,7 @@ interface IDynamicContext<ModuleType> extends b.IBobrilCtx {
 export function Dynamic<ModuleType>(): (data: IDynamicData<ModuleType>) => b.IBobrilNode {
     return b.createComponent({
         init(ctx: IDynamicContext<ModuleType>) {
+            debugger;
             ctx.data.module
                 .then((module) => {
                     setTimeout(() => {

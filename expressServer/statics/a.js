@@ -5605,6 +5605,7 @@ var __bbb={};(function(undefined) {
     function Dynamic() {
         return createComponent({
             init: function(ctx) {
+                debugger;
                 ctx.data.module.then(function(module) {
                     setTimeout(function() {
                         ctx.module = module;
@@ -5619,22 +5620,58 @@ var __bbb={};(function(undefined) {
             }
         });
     }
-    init(function() {
-        return [ {
-            tag: "h1",
-            children: "Hello World!"
-        }, {
+    var app = component(function() {
+        return [ link(styledDiv({
             tag: "div",
-            children: Dynamic()({
-                module: __import("c.js", "a")
-            })
+            children: "todo"
         }, {
+            textDecoration: "underline"
+        }), "todo"), link(styledDiv({
             tag: "div",
-            children: Dynamic()({
-                module: __import("d.js", "b")
-            })
-        } ];
+            children: "counter"
+        }, {
+            textDecoration: "underline"
+        }), "counter") ];
     });
+    var todo = component(function() {
+        return [ link(styledDiv({
+            tag: "div",
+            children: "⬅"
+        }, {
+            fontSize: "30px"
+        }), "/"), {
+            tag: "h1",
+            children: "Todo"
+        }, Dynamic()({
+            module: __import("c.js", "a")
+        }) ];
+    });
+    var counter = component(function() {
+        return [ link(styledDiv({
+            tag: "div",
+            children: "⬅"
+        }, {
+            fontSize: "30px"
+        }), "/"), {
+            tag: "h1",
+            children: "Counter"
+        }, Dynamic()({
+            module: __import("d.js", "b")
+        }) ];
+    });
+    routes([ route({
+        url: "/",
+        name: "todo",
+        handler: app
+    }), route({
+        url: "/todo",
+        name: "todo",
+        handler: todo
+    }), route({
+        url: "/counter",
+        name: "counter",
+        handler: counter
+    }) ]);
     __bbb.c = getMedia;
     __bbb.Jf = styleDef;
     __bbb.f = selectorStyleDef;
