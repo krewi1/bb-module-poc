@@ -14,12 +14,10 @@ export function Dynamic<ModuleType>(): (data: IDynamicData<ModuleType>) => b.IBo
         init(ctx: IDynamicContext<ModuleType>) {
             ctx.data.module
                 .then((module) => {
-                    setTimeout(() => {
-                        ctx.module = module;
-                        b.invalidate(ctx);
-                    });
+                     ctx.module = module;
+                     b.invalidate(ctx);
                 })
-                .catch(() => null)
+                .catch(() => ctx.module = null)
         },
         render(ctx: IDynamicContext<ModuleType>, me: b.IBobrilNode) {
             me.children = ctx.module ? ctx.module["default"]() : "loading";
